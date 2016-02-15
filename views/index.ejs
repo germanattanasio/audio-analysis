@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <title>Audio Analysis Dashboard</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <div class="_app--banner">
+    <div class="_app--container">
+      <a class="header--container" href="/">
+        <div class="header--logo">
+          <img src="images/logo.png" alt="" />
+        </div>
+        <div class="header--title">
+          Audio Analysis
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="_app--container">
+    <div class="_app--heading">
+      <div class="heading--title">
+        Audio Analysis
+      </div>
+    </div>
+
+    <div class="_app--description">
+      This application uses the IBM Watson Concept Insights service coupled with the Speech to Text service in order to provide analysis of the concepts that appear in Youtube videos. (At this moment, this app is compatible only with Google Chrome and Mozilla
+      Firefox.)
+    </div>
+
+    <a class="_app--get-started" href="#video-picking">
+      <div class="get-started--text">
+        Get Started
+      </div>
+      <span class="get-started--icon icon icon-down-arrow"></span>
+    </a>
+  </div>
+
+  <div class="_app--input-area">
+    <div class="_app--container">
+
+
+      <div class="_app--video-picking">
+        <div class="video-picking--title" id="video-picking">
+          Pick a video that interests you:
+        </div>
+        <a class="video-picking--video-container" href="dashboard?v=DywO4zksfXw">
+          <img class="video-picking--video-cover-pic" src="images/cover-page-IBM.jpg">
+          <div class="video-picking--video-title">
+            IBM Watson: The Science Behind an Answer
+          </div>
+        </a>
+        <a class="video-picking--video-container" href="dashboard?v=gkjW9PZBRfk">
+          <img class="video-picking--video-cover-pic" src="images/cover-page-Emma.jpg">
+          <div class="video-picking--video-title">
+            Emma Watson at the HeForShe Campaign 2014
+          </div>
+        </a>
+        <a class="video-picking--video-container" href="dashboard?v=GyzrcMONm60">
+          <img class="video-picking--video-cover-pic" src="images/cover-page-Obama.jpg">
+          <div class="video-picking--video-title">
+            Barack Obama at Paris Climate Conference
+          </div>
+        </a>
+        <a class="video-picking--video-container" href="dashboard?v=vMXZbRqHnJ4">
+          <img class="video-picking--video-cover-pic" src="images/cover-page-Coral.jpg">
+          <div class="video-picking--video-title">
+            Coral Reefs | Angel Rivero | TEDxPascoCountySchools
+          </div>
+        </a>
+        <div class="video-picking--label">
+          Or paste your youtube url here
+        </div>
+        <div class="video-picking--input-container">
+          <input class="video-picking--input" type="text" name="name" placeholder="youtube url">
+
+          <span class="video-picking--input-btn icon icon-right-arrow" type="button" name="button">
+           </span>
+        </div>
+      </div>
+
+      <div class="footer--legal-links-container-index">
+        <a class="footer--legal-link" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/" target="_blank">
+           Built with IBM Watson
+         </a> |
+        <a class="footer--legal-link" href="#">
+           Terms & Conditions
+         </a> |
+        <a class="footer--legal-link" href="http://www.ibm.com/privacy/us/en/" target="_blank">
+           Privacy
+         </a>
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+  <!-- Place js files at the end of the document, with fallbacks for CDNs -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

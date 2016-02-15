@@ -1,0 +1,19 @@
+---
+declared-services:
+  concept-insights-service:
+    label: concept_insights
+    plan: standard
+  speech-to-text-service:
+    label: speech_to_text
+    plan: standard
+applications:
+- name: video-analysis
+  path: .
+  command: npm start
+  memory: 512M
+  services:
+  - speech-to-text-service
+  - concept-insights-service
+  env:
+    NODE_ENV: production
+    SECURE_EXPRESS: 1

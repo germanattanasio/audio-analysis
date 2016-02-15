@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ct" content="<%= ct %>">
+  <title>Video Analysis Dashboard</title>
+  <link href="css/watson-bootstrap-style.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="images/favicon.ico" />
+</head>
+
+<body>
+  <!-- top nav section -->
+  <div class="navbar-wrapper">
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <!-- IBM Watson Logo -->
+        <div class="navbar-header">
+          <a class="navbar-brand no-underline" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/"><span class="thin-branding">IBM</span> Watson Developer Cloud</a>
+        </div>
+        <div class="float-right">
+          <ul class="nav navbar-nav">
+            <li><a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/services-catalog.html" class="no-underline">Services</a></li>
+            <li><a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/" class="no-underline">Docs</a></li>
+            <li><a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/gallery.html" class="no-underline">App Gallery</a></li>
+            <li><a href="https://developer.ibm.com/watson/" class="no-underline">Community</a></li>
+          </ul>
+        </div>
+        <!-- .navbar right-->
+      </div>
+      <!-- .container -->
+    </div>
+    <!-- .navbar -->
+
+  </div>
+  <!-- .navbar-wrapper -->
+
+  <!-- Service Description Bar -->
+
+  <div class="header">
+    <div class="container">
+      <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
+        <img src="images/service-icon.svg" class="service-icon">
+      </div>
+      <!-- .col-lg-2 -->
+
+      <div class="col-lg-10 col-md-10 col-xs-12">
+        <h1>Video Analysis Dashboard</h1>
+        <p>This dashboard uses the IBM Watson Concept Insights service coupled with the Speech To Text service in order to provide analysis of the concepts that appear in Youtube videos.</p>
+        <p><img src="images/icons/link.svg" class="glyph"><strong>Resources:</strong></br>
+          <div class="resources">
+            <a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/speech-to-text/api">API Reference</a>
+            <a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/speech-to-text/">Documentation</a>
+            <a href="https://github.com/watson-developer-cloud/speech-to-text-nodejs">Fork on Github</a>
+            <a href="https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/speech-to-text-nodejs">Fork and Deploy on Github</a>
+          </div>
+          <!-- .resources -->
+        </p>
+      </div>
+      <!-- .col-lg-10 -->
+    </div>
+    <!-- .container -->
+  </div>
+  <!-- .header -->
+
+  <style>
+    rect {
+      fill: none;
+      pointer-events: all;
+    }
+
+    .node {
+      fill: #000;
+    }
+
+    .cursor {
+      fill: none;
+      stroke: brown;
+      pointer-events: none;
+    }
+
+    .link {
+      stroke: #999;
+    }
+  </style>
+
+
+  <!-- Step 1 Section-->
+  <div class="container">
+    <!-- Step 3 Section-->
+    <!-- First column of inputs -->
+
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h2>Instructions</h2>
+        <ul>
+          <li>
+            <span class="badge">0</span> Only tested on chrome and firefox so far.
+          </li>
+
+          <li>
+            <span class="badge">1</span> Go on youtube and find a video you want to analyze.
+          </li>
+          <li>
+            <span class="badge">2</span> Copy video URL.
+          </li>
+          <li>
+            <span class="badge">3</span> Paste video URL in the box below and press "load youtube video" button.
+          </li>
+          <li>
+            <span class="badge">4</span> You may use the default youtube URL that or you may paste your own one
+          </li>
+          <li>
+            <span class="badge">5</span> Press play to start analysis (you can pasue and unpause to your liking).
+          </li>
+          <li>
+            <span class="badge">6</span> Be patient. It will take a few sentences, depending on the speech for the system to really understand what is going on the youtube video.
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div role="tabpanel" class="tab-pane active" id="home2">
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <h2>Video URL</h2>
+          <div class="form-group">
+            <!--	      <div class="col-lg-2 col-md-12 col-sm-12">
+			<button type="button" class="btn btn-primary-outline btn-sm" id="recordButton"><img id="microphoneIcon" src="images/microphone.svg" class="icon"> </button>
+	      </div> -->
+            <div class="col-lg-10 col-md-12 col-sm-12">
+              <input type="text" class="form-control" id="video_url" value="https://www.youtube.com/watch?v=GyzrcMONm60">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12">
+              <button type="button" class="btn btn-primary" id="loadVideoButton">Load youtube video</button>
+            </div>
+          </div>
+
+
+
+          <div>
+            <video id="inlinevideo" controls hidden>
+              <source src="">
+            </video>
+          </div>
+
+          <!--	    <div id="player"></div> -->
+
+
+
+
+
+
+        </div>
+        <!-- .col-lg-8 -->
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <h2>Transcription</h2>
+          <textarea readonly id="resultsText" dir="auto"></textarea>
+        </div>
+
+      </div>
+      <!-- .col-lg-12 -->
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              <span id="dropdownMenuDefault" class="dropdown-text">US English broadband model (16KHz) </span>
+              <span class="caret"></span>
+            </button>
+            <ul id="dropdownMenuList" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            </ul>
+          </div>
+
+        </div>
+        <!-- .col-lg-6 -->
+
+        <div class="col-lg-2 col-md-6 col-sm-12">
+
+        </div>
+        <!--
+          <nav class="navbar navbar-inverse">
+          <ul class="navbar-text">
+            <li id="recordButton" class="button-row nav-inverse-color">
+            <img id="microphoneIcon" src="images/microphone.svg" class="icon"> Recird Adui
+            <span class="nav-label">Record Audio</span>
+            </li>
+          </ul>
+
+          </nav>
+	  </div>-->
+
+      </div>
+      <!-- row -->
+
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="audioParent">
+            <audio style="display:none" class="audio" controls>
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
+      <!-- row -->
+
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h1> Concept Analysis</h1>
+          <div id="mychart">
+          </div>
+        </div>
+        <!-- .col-lg-12 -->
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3>Metadata</h3>
+              <span class="pull-right clickable"><i class="caret-up" style="  margin-top: -1.3em;"></i></span>
+            </div>
+            <div class="panel-body">
+              <!-- Table -->
+              <div class="table-scroll">
+                <table id="metadataTable">
+                  <thead>
+                    <tr class="table-header-row">
+                      <th>WORD</th>
+                      <th>START TIME(sec)</th>
+                      <th>END TIME(sec)</th>
+                      <th>CONFIDENCE</th>
+                    </tr>
+                  </thead>
+                  <tbody id="metadataTableBody">
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- END Table -->
+              <div class="alt-hypothesis">
+                <h5>Alternate Hypotheses</h5>
+                <hr>
+                <div class="hypotheses">
+                  <ol></ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spacer-->
+          <!-- TODO: Move this to CSS-->
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <br>
+              <br>
+            </div>
+          </div>
+
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- for file upload dialog in toolbar -->
+    <input style="display:none" type="file" id="fileUploadDialog">
+
+    <!-- Place js files at the end of the document, with fallbacks for CDNs -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.12/d3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--      <script src="js/concepts.js"></script> -->
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>

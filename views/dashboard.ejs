@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <title>Audio Analysis</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <div class="_dashboard--header">
+    <div class="_dashboard--container">
+      <a class="header--container" href="/">
+        <div class="header--logo">
+          <img src="images/logo.png" alt="" />
+        </div>
+        <div class="header--title">
+          Audio Analysis
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="_dashboard--video-session">
+    <div class="_dashboard--container">
+      <a class="video-session--another-video-btn" href="/#video-picking">
+        <span class="video-session--back-btn-icon icon icon-back-btn"></span>
+        <span class="video-session--text">Try another video</span>
+      </a>
+
+      <div class="video-session--video" id="videoSession">
+      </div>
+
+      <div class="video-session--video-title">
+      </div>
+
+      <div class="_hidden--video video-session--hidden-video">
+        <video id="inlinevideo" hidden></video>
+      </div>
+    </div>
+  </div>
+
+  <div class="_dashboard--analysis">
+    <div class="_dashboard--container">
+      <div class="_dashboard--recommendation">
+        <div class="recommendation--title-container">
+          <div class="recommendation--title _dashboard--title">
+            Recommendations
+          </div>
+          <div class="recommendation--description">
+            Generated from concepts with the highest confidence scores
+          </div>
+        </div>
+        <div class="recommendation--content-container">
+          <div class="recommendation--container">
+            <div class="recommendation--TED">
+              <div class="recommendation--TED-title">
+                TED Talk about climate change science
+              </div>
+              <div class="recommendation--TED-author">
+                Dr. Climate Scientist
+              </div>
+            </div>
+            <div class="recommendation--concept-container">
+              <div class="recommendation--concept">
+                Greenhouse gas
+              </div>
+              <div class="recommendation--concept">
+                Fossil Fuel
+              </div>
+              <div class="recommendation--concept">
+                Climate
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="_dashboard--timeline">
+        <div class="timeline--title-container">
+          <div class="timeline--title _dashboard--title">
+            Timeline
+          </div>
+          <div class="timeline--legend">
+            <div class="timeline--legend-container">
+              <span class="timeline--legend-high-icon"></span>
+              <span class="timeline--legend-text">High confidence</span>
+            </div>
+            <div class="timeline--legend-container">
+              <span class="timeline--legend-middle-icon"></span>
+              <span class="timeline--legend-text">Middle confidence</span>
+            </div>
+            <div class="timeline--legend-container">
+              <span class="timeline--legend-low-icon"></span>
+              <span class="timeline--legend-text">Low confidence</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--container">
+          <div class="timeline--content-container">
+            <div class="timeline--content-block">
+              <span class="timeline--content-high-icon"></span>
+              <div class="timeline--content-inner-container timeline--first-content-inner-container">
+                <div class="timeline--content">
+                  <div class="timeline--content-title">
+                    Climate change
+                  </div>
+                  <div class="timeline--content-date">
+                    3min 16s
+                  </div>
+                  <div class="timeline--content-text">
+                    “I saw the effect of climate change per stand in our northern most state Alaska where...”
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline--content-block">
+              <span class="timeline--content-low-icon"></span>
+              <div class="timeline--content-inner-container">
+                <div class="timeline--content">
+                  <div class="timeline--content-title">
+                    Sanctuary
+                  </div>
+                  <div class="timeline--content-date">
+                    2min 10s
+                  </div>
+                  <div class="timeline--content-text">
+                    “I saw the effect of climate change per stand in our northern most state Alaska where...”
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline--content-block">
+              <span class="timeline--content-middle-icon"></span>
+              <div class="timeline--content-inner-container">
+                <div class="timeline--content">
+                  <div class="timeline--content-title">
+                    Nation
+                  </div>
+                  <div class="timeline--content-date">
+                    2min 1s
+                  </div>
+                  <div class="timeline--content-text">
+                    “I saw the effect of climate change per stand in our northern most state Alaska where...”
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="_dashboard--transcript">
+            <div class="_dashboard--title transcript--title">
+              Transcript
+            </div>
+            <div class="transcript--content">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="_dashboard--how-it-works">
+        <div class="_dashboard--title how-it-works--loading">
+          Your analysis is loading ...
+        </div>
+        <div class="_dashboard--title how-it-works--title">
+          How the analysis works
+        </div>
+        <div class="how-it-works--steps-container">
+          <div class="how-it-works--step-item">
+            <img class="how-it-works--step-item-img" src="images/how-step-1.png" alt="" />
+            <div class="how-it-works--step-item-des">
+              1. Video plays and audio is analyzed
+            </div>
+          </div>
+          <div class="how-it-works--step-item">
+            <img class="how-it-works--step-item-img" src="images/how-step-2.png" alt="" />
+            <div class="how-it-works--step-item-des">
+              2. Audio is transcribed
+            </div>
+          </div>
+          <div class="how-it-works--step-item">
+            <img class="how-it-works--step-item-img" src="images/how-step-3.png" alt="" />
+            <div class="how-it-works--step-item-des">
+              3. Concepts are gathered
+            </div>
+          </div>
+          <div class="how-it-works--step-item">
+            <img class="how-it-works--step-item-img" src="images/how-step-4.png" alt="" />
+            <div class="how-it-works--step-item-des">
+              4. Concepts are ranked based on confidence
+            </div>
+          </div>
+          <div class="how-it-works--step-item">
+            <img class="how-it-works--step-item-img" src="images/how-step-5.png" alt="" />
+            <div class="how-it-works--step-item-des">
+              5. Recommendations are given based on top concepts
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="_dashboard--footer">
+    <div class="_dashboard--container">
+      <div class="footer--title">
+        Learn more
+      </div>
+      <div class="footer--links-container">
+        <a class="footer--link" href="#">
+          Fork on Github
+        </a>
+        <a class="footer--link" href="#">
+          Deploy on Bluemix
+        </a>
+        <a class="footer--link" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/concept-insights.html" target="_blank">
+          Concept Insights
+        </a>
+        <a class="footer--link" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/speech-to-text.html" target="_blank">
+          Speech to Text
+        </a>
+      </div>
+
+      <div class="footer--dashboard-legal-links-container">
+        <a class="footer--legal-link" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/" target="_blank">
+          Built with IBM Watson
+        </a> |
+        <a class="footer--legal-link" href="#">
+          Terms & Conditions
+        </a> |
+        <a class="footer--legal-link" href="http://www.ibm.com/privacy/us/en/" target="_blank">
+          Privacy
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Place js files at the end of the document, with fallbacks for CDNs -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+
+</html>
