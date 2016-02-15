@@ -4,7 +4,7 @@
   "description": "A sample nodejs app for Bluemix that combines Speech to Text with Concept Insights to retrieve concepts from videos",
   "repository": {
     "type": "git",
-    "url": "https://github.com/watson-developer-cloud/video-analysis-nodejs.git"
+    "url": "https://github.com/watson-developer-cloud/audio-analysis-application-starter-kit.git"
   },
   "author": "IBM Corp.",
   "contributors": [{
@@ -19,7 +19,7 @@
   }],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/watson-developer-cloud/video-analysis-nodejs/issues"
+    "url": "https://github.com/watson-developer-cloud/audio-analysis-application-starter-kit/issues"
   },
   "browserify-shim": {
     "jquery": "global:jQuery"
