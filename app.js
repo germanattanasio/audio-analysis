@@ -16,14 +16,6 @@
 
 'use strict';
 
-try {
-    var env = require('./.env.js');
-    for (var key in env) {
-    	if (!(key in process.env))
-    	    process.env[key] = env[key];
-    }
-} catch(ex) {}
-
 var express         = require('express'),
     app             = express(),
     watson          = require('watson-developer-cloud'),
@@ -34,8 +26,8 @@ var express         = require('express'),
 require('./config/express')(app);
 
 var authService = watson.authorization({
-  username: '<username>',
-  password: '<password>',
+  username: '<username>', // speech to text username
+  password: '<password>', // speech to text password
   version: 'v1'
 });
 
