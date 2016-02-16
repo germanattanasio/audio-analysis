@@ -29,72 +29,72 @@ var getModels = require('./models').getModels;
 window.BUFFERSIZE = 8192;
 
 $(document).ready(function() {
-  $('.timeline--content-block').html('');
-  $('.recommendation--concept-container').html('');
-  $('.recommendation--TED').html('');
+    $('.timeline--content-block').html('');
+    $('.recommendation--concept-container').html('');
+    $('.recommendation--TED').html('');
 
-  var tokenGenerator = utils.createTokenGenerator();
+    var tokenGenerator = utils.createTokenGenerator();
 
-  // Make call to API to try and get token
-  tokenGenerator.getToken(function(err, token) {
-    window.onbeforeunload = function() {
-      localStorage.clear();
-    };
+    // Make call to API to try and get token
+    tokenGenerator.getToken(function(err, token) {
+	window.onbeforeunload = function() {
+	    localStorage.clear();
+	};
 
-    if (!token) {
-      console.error('No authorization token available');
-      console.error('Attempting to reconnect...');
+	if (!token) {
+	    console.error('No authorization token available');
+	    console.error('Attempting to reconnect...');
+	    
+	    if (err && err.code)
+		showError('Server error ' + err.code + ': '+ err.error);
+	    else
+		showError('Server error ' + err.code + ': please refresh your browser and try again');
+	}
 
-      if (err && err.code)
-        showError('Server error ' + err.code + ': ' + err.error);
-      else
-        showError('Server error ' + err.code + ': please refresh your browser and try again');
-    }
+	var viewContext = {
+	    currentModel: 'en-US_BroadbandModel',
+	    models: models,
+	    token: token,
+	    bufferSize: BUFFERSIZE
+	};
 
-    var viewContext = {
-      currentModel: 'en-US_BroadbandModel',
-      models: models,
-      token: token,
-      bufferSize: BUFFERSIZE
-    };
+	// initViews(viewContext);
+	initVideoPlay(viewContext);
 
-    // initViews(viewContext);
-    initVideoPlay(viewContext);
+	// Save models to localstorage
+	localStorage.setItem('models', JSON.stringify(models));
+    
+	//Check if playback functionality is invoked
+	localStorage.setItem('playbackON', false);
+	var query = window.location.search.substring(1);
+	var vars = query.split('&');
+	for(var i=0; i< vars.length; i++) {
+	    var pair = vars[i].split('=');
+	    if(decodeURIComponent(pair[0]) === 'debug') {   
+		localStorage.setItem('playbackON',decodeURIComponent(pair[1]));
+	    }
+	}
 
-    // Save models to localstorage
-    localStorage.setItem('models', JSON.stringify(models));
+	// Set default current model
+	localStorage.setItem('currentModel', 'en-US_BroadbandModel');
+	localStorage.setItem('sessionPermissions', 'true');
+    
+	getModels(token);
 
-    //Check if playback functionality is invoked
-    localStorage.setItem('playbackON', false);
-    var query = window.location.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) {
-      var pair = vars[i].split('=');
-      if (decodeURIComponent(pair[0]) === 'debug') {
-        localStorage.setItem('playbackON', decodeURIComponent(pair[1]));
-      }
-    }
-
-    // Set default current model
-    localStorage.setItem('currentModel', 'en-US_BroadbandModel');
-    localStorage.setItem('sessionPermissions', 'true');
-
-    getModels(token);
-
-    $.subscribe('clearscreen', function() {
-      $('#resultsText').text('');
-      $('#resultsJSON').text('');
-      $('.error-row').hide();
-      $('.notification-row').hide();
-      $('.hypotheses > ul').empty();
-      $('#metadataTableBody').empty();
+	$.subscribe('clearscreen', function() {
+	    $('#resultsText').text('');
+	    $('#resultsJSON').text('');
+	    $('.error-row').hide();
+	    $('.notification-row').hide();
+	    $('.hypotheses > ul').empty();
+	    $('#metadataTableBody').empty();
+	});
     });
-  });
 
-  $('.video-session--another-video-btn').on('click', function() {
-    window.location = '/';
-  });
+    $('.video-session--another-video-btn').on("click", function() {
+	window.location = "/";
+    });
 
-  $('.recommendation--content-container').hide();
-  $('._dashboard--timeline').hide();
+    $('.recommendation--content-container').hide();
+    $('._dashboard--timeline').hide();
 });

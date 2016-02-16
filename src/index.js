@@ -17,23 +17,26 @@
 'use strict';
 
 $(document).ready(function() {
-  function getUrlAndRedirect() {
-    var input = $('.video-picking--input').val(),
-        myRe = /.*www\.youtube\.com\/watch?.*v=(.*)$/,
-        myArray = myRe.exec(input);
-
-    if (myArray === null || myArray.length != 2) {
-      /* let's try for a second type of link from youtube */
-      myRe = /.*youtu\.be\/(.*)/;
-      myArray = myRe.exec(input);
+    function getUrlAndRedirect() {
+	var input = $(".video-picking--input").val()
+	var myRe = /.*www\.youtube\.com\/watch?.*v=(.*)$/;
+	var myArray = myRe.exec(input);
+	if (myArray == null || myArray.length != 2) {
+	    /* let's try for a second type of link from youtube */
+	    myRe = /.*youtu\.be\/(.*)/;
+	    myArray = myRe.exec(input)
+	}
+	if (myArray == null || myArray.length != 2) {
+	    // error
+	    return;
+	}
+	window.location.assign('/dashboard?v=' + myArray[1]);
     }
 
-    window.location.assign('/dashboard?v=' + myArray[1]);
-  }
-
-  $('.video-picking--input-btn').on('click', getUrlAndRedirect);
-  $('.video-picking--input').keypress(function(e) {
-    if (e.which === 13)
-      getUrlAndRedirect();
-  });
+    $('.video-picking--input-btn').on("click",getUrlAndRedirect);
+    $('.video-picking--input').keypress(function(e) {
+	if (e.which == 13) {
+	    getUrlAndRedirect();
+	}
+    });
 });

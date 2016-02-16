@@ -29,20 +29,20 @@ var fileBlock = function(_offset, length, _file, readChunk) {
 // Based on alediaferia's SO response
 // http://stackoverflow.com/questions/14438187/javascript-filereader-parsing-long-file-in-chunks
 exports.onFileProgress = function(options, ondata, running, onerror, onend, samplingRate) {
-  var file = options.file;
-  var fileSize = file.size;
-  var chunkSize = options.bufferSize || 16000; // in bytes
-  var offset = 0;
+  var file       = options.file;
+  var fileSize   = file.size;
+  var chunkSize  = options.bufferSize || 16000;  // in bytes
+  var offset     = 0;
   var readChunk = function(evt) {
     if (offset >= fileSize) {
       console.log('Done reading file');
       onend();
       return;
     }
-    if (!running()) {
+    if(!running()) {
       return;
     }
-    if (evt.target.error === null) {
+    if (evt.target.error == null) {
       var buffer = evt.target.result;
       var len = buffer.byteLength;
       offset += len;
@@ -57,11 +57,11 @@ exports.onFileProgress = function(options, ondata, running, onerror, onend, samp
     // use this timeout to pace the data upload for the playSample case,
     // the idea is that the hyps do not arrive before the audio is played back
     if (samplingRate) {
-      // console.log('samplingRate: ' +
+    	// console.log('samplingRate: ' +
       //  samplingRate + ' timeout: ' + (chunkSize * 1000) / (samplingRate * 2));
-      setTimeout(function() {
-        fileBlock(offset, chunkSize, file, readChunk);
-      }, (chunkSize * 1000) / (samplingRate * 2));
+    	setTimeout(function() {
+    	  fileBlock(offset, chunkSize, file, readChunk);
+    	}, (chunkSize * 1000) / (samplingRate * 2));
     } else {
       fileBlock(offset, chunkSize, file, readChunk);
     }
@@ -83,7 +83,7 @@ exports.createTokenGenerator = function() {
       var url = '/api/token';
       var tokenRequest = new XMLHttpRequest();
       tokenRequest.open('POST', url, true);
-      tokenRequest.setRequestHeader('csrf-token', $('meta[name="ct"]').attr('content'));
+      tokenRequest.setRequestHeader('csrf-token',$('meta[name="ct"]').attr('content'));
       tokenRequest.onreadystatechange = function() {
         if (tokenRequest.readyState === 4) {
           if (tokenRequest.status === 200) {
@@ -91,7 +91,7 @@ exports.createTokenGenerator = function() {
             callback(null, token);
           } else {
             var error = 'Cannot reach server';
-            if (tokenRequest.responseText) {
+            if (tokenRequest.responseText){
               try {
                 error = JSON.parse(tokenRequest.responseText);
               } catch (e) {
@@ -104,15 +104,13 @@ exports.createTokenGenerator = function() {
       };
       tokenRequest.send();
     },
-    getCount: function() {
-      return hasBeenRunTimes;
-    }
+    getCount: function() { return hasBeenRunTimes; }
   };
 };
 
 exports.initPubSub = function() {
-  var o = $({});
-  $.subscribe = o.on.bind(o);
+  var o         = $({});
+  $.subscribe   = o.on.bind(o);
   $.unsubscribe = o.off.bind(o);
-  $.publish = o.trigger.bind(o);
+  $.publish     = o.trigger.bind(o);
 };

@@ -37,7 +37,7 @@ exports.initVideoPlay = function(ctx) {
     video_id = '';
 
   for (var i = 0; i < params.length; i++) {
-    if (params[i].indexOf('v=') ==== 0)
+    if (params[i].indexOf('v=') === 0)
       video_id = params[i].substr(2);
   }
 
