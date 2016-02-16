@@ -7,16 +7,20 @@
     "url": "https://github.com/watson-developer-cloud/audio-analysis-application-starter-kit.git"
   },
   "author": "IBM Corp.",
-  "contributors": [{
-    "name": "James Zhang",
-    "email": "jzhang300@us.ibm.com"
-  }, {
-    "name": "Eva Xiaohui Luo",
-    "email": "evaluo_xhl@us.ibm.com"
-  }, {
-    "name": "German Attanasio Ruiz",
-    "email": "germanatt@us.ibm.com"
-  }],
+  "contributors": [
+    {
+      "name": "James Zhang",
+      "email": "jzhang300@us.ibm.com"
+    },
+    {
+      "name": "Eva Xiaohui Luo",
+      "email": "evaluo_xhl@us.ibm.com"
+    },
+    {
+      "name": "German Attanasio Ruiz",
+      "email": "germanatt@us.ibm.com"
+    }
+  ],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/watson-developer-cloud/audio-analysis-application-starter-kit/issues"
@@ -50,6 +54,7 @@
     "jsdom": "3.1.2",
     "request": "2.69.0",
     "uglifyjs": "^2.4.10",
+    "vcap_services": "^0.1.7",
     "watchify": "^3.6.1",
     "watson-developer-cloud": "^1.1.2",
     "watson-speech": "^0.7.5"

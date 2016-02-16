@@ -18,6 +18,8 @@
 
 var express         = require('express'),
     app             = express(),
+    vcapServices    = require('vcap_services'),
+    extend          = require('util')._extend,
     watson          = require('watson-developer-cloud'),
     youtube         = require('./apis/youtube'),
     conceptInsights = require('./apis/concept_insights');
@@ -25,11 +27,11 @@ var express         = require('express'),
 // Bootstrap application settings
 require('./config/express')(app);
 
-var authService = watson.authorization({
+var authService = watson.authorization(extend({
   username: '<username>', // speech to text username
   password: '<password>', // speech to text password
   version: 'v1'
-});
+}, vcapServices.getCredentials('speech_to_text')));
 
 app.get('/', function(req, res) {
   res.render('index');
