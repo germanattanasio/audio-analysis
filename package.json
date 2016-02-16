@@ -37,7 +37,8 @@
     "start": "node app.js",
     "build-debug": "browserify src/index.js > public/js/index.js && browserify src/dashboard.js > public/js/dashboard.js",
     "build": "browserify src/index.js | uglifyjs -nc > public/js/index.js && browserify src/dashboard.js | uglifyjs -nc > public/js/dashboard.js",
-    "watch": "watchify -v -d -o public/js/index.js src/index.js"
+    "watch": "watchify -v -d -o public/js/index.js src/index.js",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "async": "1.5.2",

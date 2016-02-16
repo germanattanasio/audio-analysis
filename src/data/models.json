@@ -1,0 +1,18 @@
+{
+   "models": [
+      {
+         "url": "https://stream.watsonplatform.net/speech-to-text/api/v1/models/en-US_BroadbandModel",
+         "rate": 16000,
+         "name": "en-US_BroadbandModel",
+         "language": "en-US",
+         "description": "US English broadband model."
+      },
+      {
+         "url": "https://stream.watsonplatform.net/speech-to-text/api/v1/models/en-US_NarrowbandModel",
+         "rate": 8000,
+         "name": "en-US_NarrowbandModel",
+         "language": "en-US",
+         "description": "US English narrowband model."
+      }
+   ]
+}
