@@ -77,8 +77,11 @@ function startVideoSpeechStream() {
     videoProps.stream = WatsonSpeechToText.recognizeElement({
 	element: myMediaElement,
 	token: videoProps.ctx.token,
-	muteSource: true})
-	.pipe(new WatsonSpeechToText.FormatStream());
+	muteSource: true,
+	autoPlay: false
+    })
+    .pipe(new WatsonSpeechToText.FormatStream());
+    myMediaElement.play();
     videoProps.playing = true;
 
     $('<span class="transcript-current-sentence">&nbsp;</span>').appendTo($('.transcript--content'));
