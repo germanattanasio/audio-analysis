@@ -16,6 +16,17 @@
 
 'use strict';
 
+
+try {
+  var env = require('./.env.js');
+  for (var key in env) {
+    if (!(key in process.env))
+      process.env[key] = env[key];
+  }
+} catch(ex) {
+  console.log('error loading .env.js');
+}
+
 var express         = require('express'),
     app             = express(),
     vcapServices    = require('vcap_services'),
