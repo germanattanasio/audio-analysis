@@ -1,6 +1,6 @@
-# Audio Analytics: Audio Analysis
+# Audio Analysis
 
-This application is an **Application Starter Kit** (ASK) that is designed to get you up and running quickly with a common industry pattern, and to provide information about best practices around Watson services. The **Audio Analysis** application was created to highlight the combination of the [Speech to Text][speech_to_text] (STT) and [Concept Insights][concept_insights] services as an [Audio Analytics](#about-the-audio-analysis-pattern) tool. This application can serve as the basis for your own applications that follow that pattern.
+This application is an **Application Starter Kit** (ASK) that is designed to get you up and running quickly with a common industry pattern, and to provide information about best practices around Watson services. The **Audio Analysis** application was created to highlight the combination of the [Speech to Text][speech_to_text] (STT) and [Concept Insights][concept_insights] services as an [Audio Analysis](#about-the-audio-analysis-pattern) tool. This application can serve as the basis for your own applications that follow that pattern.
 
 Give it a try! Click the button below to fork the repository that contains the source code for this application into IBM DevOps Services, which then deploys your own copy of this application on Bluemix automatically:
 
@@ -10,7 +10,7 @@ Give it a try! Click the button below to fork the repository that contains the s
   - [How this app works](#how-this-app-works)
   - [Getting Started](#getting-started)
   - [Running the application locally](#running-the-application-locally)
-  - [About the Audio Analytics pattern](#about-the-audio-analytics-pattern)
+  - [About the Audio Analysis pattern](#about-the-audio-analysis-pattern)
     - [When to use this pattern](#when-to-use-this-pattern)
     - [Best practices](#best-practices)
     - [Reference information](#reference-information)
@@ -151,7 +151,7 @@ module.exports = {
   5. Open [http://localhost:5000](http://localhost:5000) to see the running application.
 
 
-## About the Audio Analytics pattern
+## About the Audio Analysis pattern
 
 First, make sure you read the [Reference Information](#reference-information) to understand the services that are involved in this pattern.
 The following image shows a flow diagram for spoken language analysis using the Speech-To-Text and Concept Insights services:
@@ -162,11 +162,11 @@ The following image shows a flow diagram for spoken language analysis using the 
 
 ### Using the Speech To Text and the Concept Insights services
 
-When a quality audio signal contains terms found in Wikipedia (the current source of concepts in Concept Insights), the combination of Speech To Text and Concept Insights can be used to analyze the audio source to build summaries, indexes, and provide recommendations for additional related content. Though the Speech-To-Text service supports several languages, the Concept Insights service currently only supports English.
+When a quality audio signal contains terms found in Wikipedia (the current source of concepts in Concept Insights), the combination of Speech To Text and Concept Insights can be used to analyze the audio source to build summaries, indices, and to provide recommendations for additional related content. Though the Speech-To-Text service supports several languages, the Concept Insights service currently only supports English.
 
-The Audio Analysis app uses the node.js Speech-To-Text Javascript SDK, which is a client-side library for audio transcriptions of using the Speech To Text service. It also uses the `annotate_text` and `conceptual_search` APIs from Concept Insights to extract concepts and provide content recommendations. In order to change the source of content for recommendations, the user should ingest the content of interest into the Concept Insights service using the API set under the prefix `/corpus`.
+The Audio Analysis app uses the node.js Speech-To-Text JavaScript SDK, which is a client-side library for audio transcriptions from the Speech To Text service. It also uses the `annotate_text` and `conceptual_search` APIs from Concept Insights to extract concepts and provide content recommendations. In order to change the source of content for recommendations, the user should ingest the content of interest into the Concept Insights service using the API set under the prefix `/corpus`.
 
-This app genrates a new recommendation when it detects an existing concept from the streaming audio transcript. Typically, the app will be reasonably confident about the top 3 concepts after one to two minutes.  After the app is confident about the top 3 concepts, the recommendations will stablize. One can make small modifications to the app to produce different behaviors. (Maybe elaborate on this?)
+This app generates a new recommendation when it detects an existing concept from the streaming audio transcript. Typically, the app will be reasonably confident about the top 3 concepts after one to two minutes.  After the app is confident about the top 3 concepts, the recommendations will stabilize. One can make small modifications to the app to produce different behaviors.
 
 Additional experiences can be created using these services. For example, the transcripts of multiple audio files can be added to a corpus in Concept Insights (using the API endpoint /corpus) to be used as the content source for recommendations. This in turn can be used to provide a "fuzzy" search function that is able to locate reference to a topic of interest. For example, a search for “algae” will locate those portions of a video where not only “algae” is mentioned, but also “coral reefs” and “biodiversity”.
 
