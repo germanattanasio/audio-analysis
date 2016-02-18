@@ -52,6 +52,10 @@ app.get('/dashboard', function(req, res) {
   res.render('dashboard');
 });
 
+app.get('/tos', function(req, res) {
+  res.render('tos');
+});
+
 app.get('/api/labelSearch', function(req, res, next) {
   conceptInsights.labelSearch(req.query, function(err, result){
     if (err)
