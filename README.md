@@ -7,7 +7,7 @@ Give it a try! Click the button below to fork the repository that contains the s
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/audio-analysis-application-starter-kit/)
 
 You can see a version of this app that is already running by clicking
-[here](https://conversational-agent-application-starter-kit.mybluemix.net/).
+[here](https://audio-analysis-application-starter-kit.mybluemix.net/).
 
 **Note**: This sample application only works on desktop computer
 systems, and then only in the Firefox and Chrome web browsers.
