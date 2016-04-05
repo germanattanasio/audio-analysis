@@ -154,7 +154,7 @@ module.exports = {
 	```sh
 	$ node app.js
 	```
-  5. Open [http://localhost:5000](http://localhost:5000) to see the running application.
+  5. Open [http://localhost:3000](http://localhost:3000) to see the running application.
 
 
 ## About the Audio Analysis pattern
