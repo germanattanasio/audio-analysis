@@ -14,6 +14,3 @@ applications:
   services:
   - speech-to-text-service
   - concept-insights-service
-  env:
-    NODE_ENV: production
-    SECURE_EXPRESS: 1
