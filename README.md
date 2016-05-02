@@ -46,7 +46,7 @@ The following instructions explain how to [fork the project on GitHub](https://g
   4. If it is not already installed on your system, install [Node.js](http://nodejs.org/). Installing Node.js will also install the `npm` command.
 
   <a name="step5"></a>
-  5. Edit the `manifest.yml` file in the folder that contains your fork and replace `video-analysis` with a unique name for your copy of the application. The name that you specify determines the application's URL, such as `application-name.mybluemix.net`. The relevant portion of the `manifest.yml` file looks like the following:
+  5. Edit the `manifest.yml` file in the folder that contains your fork and replace `audio-analysis` with a unique name for your copy of the application. The name that you specify determines the application's URL, such as `application-name.mybluemix.net`. The relevant portion of the `manifest.yml` file looks like the following:
 
     ```yml
     applications:
