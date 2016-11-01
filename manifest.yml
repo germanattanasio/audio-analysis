@@ -1,8 +1,5 @@
 ---
 declared-services:
-  concept-insights-service:
-    label: concept_insights
-    plan: standard
   speech-to-text-service:
     label: speech_to_text
     plan: standard
@@ -13,4 +10,3 @@ applications:
   memory: 512M
   services:
   - speech-to-text-service
-  - concept-insights-service

@@ -14,35 +14,29 @@
  * limitations under the License.
  */
 
-'use strict';
+require('dotenv').config({ silent: true });
 
+var express = require('express');
+var vcapServices = require('vcap_services');
+var extend = require('extend');
+var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
+var AuthorizationV1 = require('watson-developer-cloud/authorization/v1');
+var youtube = require('./youtube');
 
-try {
-  var env = require('./.env.js');
-  for (var key in env) {
-    if (!(key in process.env))
-      process.env[key] = env[key];
-  }
-} catch(ex) {
-  console.log('error loading .env.js');
-}
+var app = express();
 
-var express         = require('express'),
-    app             = express(),
-    vcapServices    = require('vcap_services'),
-    extend          = require('util')._extend,
-    watson          = require('watson-developer-cloud'),
-    youtube         = require('./apis/youtube'),
-    conceptInsights = require('./apis/concept_insights');
+var authService = new AuthorizationV1(extend({
+  username: process.env.SPEECH_TO_TEXT_USERNAME,
+  password: process.env.SPEECH_TO_TEXT_PASSWORD,
+  url: process.env.SPEECH_TO_TEXT_URL
+}, vcapServices.getCredentials('speech_to_text')));
+
+var alchemyLanguage = new AlchemyLanguageV1({
+  api_key: process.env.ALCHEMY_LANGUAGE_API_KEY
+});
 
 // Bootstrap application settings
 require('./config/express')(app);
-
-var authService = watson.authorization(extend({
-  username: '<username>', // speech to text username
-  password: '<password>', // speech to text password
-  version: 'v1'
-}, vcapServices.getCredentials('speech_to_text')));
 
 app.get('/', function(req, res) {
   res.render('index');
@@ -56,49 +50,14 @@ app.get('/tos', function(req, res) {
   res.render('tos');
 });
 
-app.get('/api/labelSearch', function(req, res, next) {
-  conceptInsights.labelSearch(req.query, function(err, result){
+app.post('/api/concepts', function(req, res, next) {
+  alchemyLanguage.concepts(req.body, function(err, result) {
     if (err)
       next(err);
     else
       res.json(result);
-  });
-});
-
-app.get('/api/conceptualSearch', function(req, res, next) {
-  conceptInsights.conceptualSearch(req.query, function(err, result){
-    if (err)
-      next(err);
-    else
-      res.json(result);
-  });
-});
-
-app.get('/api/getRelationScoresParallel', function(req, res, next) {
-  conceptInsights.relationScoresParallel(req.query.requests, function(err, result){
-    if (err)
-      next(err);
-    else
-      res.json(result);
-  });
-});
-
-app.get('/api/getRelationScores', function(req, res, next) {
-	conceptInsights.getRelationScores(req.query, function(err, results) {
-		if (err)
-	    next(err);
-		else
-	    res.json(results);
-  });
-});
-
-app.post('/api/extractConceptMentions', function(req, res, next) {
-  conceptInsights.extractConceptMentions(req.body, function(err, results) {
-    if (err)
-      next(err);
-    else
-      res.json(results);
-  });
+    }
+  );
 });
 
 app.get('/api/video', function(req, res, next) {
@@ -107,11 +66,12 @@ app.get('/api/video', function(req, res, next) {
 
 app.get('/api/video_url', function(req, res, next) {
   youtube.getInternalUrl(req.query, function(err, url) {
-	if (err)
-    next(err);
-	else
-    res.json(url);
-  });
+    if (err)
+      next(err);
+    else
+      res.json(url);
+    }
+  );
 });
 
 // Get token using your credentials
@@ -119,11 +79,12 @@ app.post('/api/token', function(req, res, next) {
   authService.getToken({
     url: 'https://stream.watsonplatform.net/speech-to-text/api'
   }, function(err, token) {
-	  if (err)
+    if (err)
       next(err);
     else
       res.send(token);
-  });
+    }
+  );
 });
 
 // error-handler application settings
@@ -131,4 +92,5 @@ require('./config/error-handler')(app);
 
 var port = process.env.VCAP_APP_PORT || 3000;
 app.listen(port);
+// eslint-disable-next-line
 console.log('listening at:', port);

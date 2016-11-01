@@ -1,29 +1,15 @@
 {
-  "name": "video-analysis",
-  "version": "0.5.0",
-  "description": "A sample nodejs app for Bluemix that combines Speech to Text with Concept Insights to retrieve concepts from videos",
+  "name": "audio-analysis",
+  "version": "1.0.0",
+  "description": "A sample nodejs app for Bluemix that combines Speech to Text with AlchemyLanguage to retrieve concepts from videos",
   "repository": {
     "type": "git",
-    "url": "https://github.com/watson-developer-cloud/audio-analysis-application-starter-kit.git"
+    "url": "https://github.com/watson-developer-cloud/audio-analysis.git"
   },
   "author": "IBM Corp.",
-  "contributors": [
-    {
-      "name": "James Zhang",
-      "email": "jzhang300@us.ibm.com"
-    },
-    {
-      "name": "Eva Xiaohui Luo",
-      "email": "evaluo_xhl@us.ibm.com"
-    },
-    {
-      "name": "German Attanasio Ruiz",
-      "email": "germanatt@us.ibm.com"
-    }
-  ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/watson-developer-cloud/audio-analysis-application-starter-kit/issues"
+    "url": "https://github.com/watson-developer-cloud/audio-analysis/issues"
   },
   "browserify-shim": {
     "jquery": "global:jQuery"
@@ -38,30 +24,36 @@
     "build-debug": "browserify src/index.js > public/js/index.js && browserify src/dashboard.js > public/js/dashboard.js",
     "build": "browserify src/index.js | uglifyjs -nc > public/js/index.js && browserify src/dashboard.js | uglifyjs -nc > public/js/dashboard.js",
     "watch": "watchify -v -d -o public/js/index.js src/index.js",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "async": "1.5.2",
+    "async": "2.1.2",
     "body-parser": "^1.14.2",
-    "browserify": "^12.0.1",
+    "browserify": "^13.1.1",
     "browserify-shim": "^3.8.11",
+    "dotenv": "^2.0.0",
     "ejs": "^2.3.4",
     "errorhandler": "^1.4.1",
     "express": "^4.13.4",
     "express-rate-limit": "^2.1.0",
     "express-secure-only": "^0.2.1",
-    "helmet": "^1.1.0",
+    "extend": "^3.0.0",
+    "helmet": "^3.0.0",
     "jquery": ">=2.1",
     "jsdom": "3.1.2",
-    "request": "2.69.0",
+    "request": "2.76.0",
     "uglifyjs": "^2.4.10",
-    "vcap_services": "^0.1.7",
+    "vcap_services": "^0.2.0",
     "watchify": "^3.6.1",
-    "watson-developer-cloud": "^1.1.2",
-    "watson-speech": "^0.7.5"
+    "watson-developer-cloud": "^2.8.1",
+    "watson-speech": "^0.7.0"
   },
   "engines": {
-    "node": "^4.2.4",
-    "npm": "3.5.3"
+    "node": "^6.9.1",
+    "npm": "3.10.9"
+  },
+  "devDependencies": {
+    "eslint": "^3.9.1"
   }
 }

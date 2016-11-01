@@ -5,6 +5,8 @@
   <link rel="stylesheet" href="css/style.css">
   <title>Audio Analysis</title>
   <meta charset="utf-8">
+  <meta name="og:title" content="Audio Analysis - Starter Kit">
+  <meta name="og:description" content="This application uses AlchemyLanguage service coupled with the Speech to Text service in order to provide analysis of the concepts that appear in Youtube videos. (At this moment, this app is compatible only with Google Chrome and Mozilla Firefox.)">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
@@ -45,40 +47,6 @@
 
   <div class="_dashboard--analysis">
     <div class="_dashboard--container">
-      <div class="_dashboard--recommendation">
-        <div class="recommendation--title-container">
-          <div class="recommendation--title _dashboard--title">
-            Recommendations
-          </div>
-          <div class="recommendation--description">
-            Generated from concepts with the highest confidence scores
-          </div>
-        </div>
-        <div class="recommendation--content-container">
-          <div class="recommendation--container">
-            <div class="recommendation--TED">
-              <div class="recommendation--TED-title">
-                TED Talk about climate change science
-              </div>
-              <div class="recommendation--TED-author">
-                Dr. Climate Scientist
-              </div>
-            </div>
-            <div class="recommendation--concept-container">
-              <div class="recommendation--concept">
-                Greenhouse gas
-              </div>
-              <div class="recommendation--concept">
-                Fossil Fuel
-              </div>
-              <div class="recommendation--concept">
-                Climate
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="_dashboard--timeline">
         <div class="timeline--title-container">
           <div class="timeline--title _dashboard--title">
@@ -190,21 +158,7 @@
               3. Concepts are gathered
             </div>
           </div>
-          <div class="how-it-works--step-item">
-            <img class="how-it-works--step-item-img" src="images/how-step-4.png" alt="" />
-            <div class="how-it-works--step-item-des">
-              4. Concepts are ranked based on confidence
-            </div>
-          </div>
-          <div class="how-it-works--step-item">
-            <img class="how-it-works--step-item-img" src="images/how-step-5.png" alt="" />
-            <div class="how-it-works--step-item-des">
-              5. Recommendations are given based on top concepts
-            </div>
-          </div>
-
         </div>
-
       </div>
     </div>
   </div>
@@ -215,16 +169,16 @@
         Learn more
       </div>
       <div class="footer--links-container">
-        <a class="footer--link" href="https://github.com/watson-developer-cloud/audio-analysis-application-starter-kit">
+        <a class="footer--link" href="https://github.com/watson-developer-cloud/audio-analysis">
           Fork on Github
         </a>
-        <a class="footer--link" href="https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/audio-analysis-application-starter-kit/">
+        <a class="footer--link" href="https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/audio-analysis/">
           Deploy on Bluemix
         </a>
-        <a class="footer--link" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/concept-insights.html" target="_blank">
-          Concept Insights
+        <a class="footer--link" href="http://www.ibm.com/watson/developercloud/concept-insights.html" target="_blank">
+          AlchemyLanguage
         </a>
-        <a class="footer--link" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/speech-to-text.html" target="_blank">
+        <a class="footer--link" href="http://www.ibm.com/watson/developercloud/speech-to-text.html" target="_blank">
           Speech to Text
         </a>
       </div>
@@ -236,16 +190,15 @@
         <a class="footer--legal-link" href="http://www.ibm.com/privacy/us/en/" target="_blank">
           Privacy Policy
         </a> |
-        <a class="footer--legal-link" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/" target="_blank">
+        <a class="footer--legal-link" href="http://www.ibm.com/watson/developercloud/" target="_blank">
           Built with IBM Watson
         </a> |
-        <a class="footer--legal-link" href="https://github.com/watson-developer-cloud/audio-analysis-application-starter-kit" target="_blank">
+        <a class="footer--legal-link" href="https://github.com/watson-developer-cloud/audio-analysis" target="_blank">
           Fork on GitHub
         </a>
       </div>
     </div>
   </div>
-
 
   <!-- Place js files at the end of the document, with fallbacks for CDNs -->
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
