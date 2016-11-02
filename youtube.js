@@ -33,6 +33,7 @@ module.exports.getInternalUrl = function(params, callback) {
     var title = $('#eow-title').text();
 
     var ytplayer;
+    // eslint-disable-next-line
     var yt = {};
 
     scripts.each(function() {
