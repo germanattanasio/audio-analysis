@@ -63,28 +63,28 @@ The following instructions explain how to [fork the project on GitHub](https://g
 
   6. Connect to Bluemix by running the following commands in a terminal window:
 
-	```sh
-	cf api https://api.ng.bluemix.net
-	cf login -u <your-Bluemix-ID> -p <your-Bluemix-password>
-	```
+  ```sh
+  cf api https://api.ng.bluemix.net
+  cf login -u <your-Bluemix-ID> -p <your-Bluemix-password>
+  ```
 
   7. Create an instance of the Speech to Text in Bluemix by running the following command:
 
-	```sh
-	cf create-service speech_to_text standard speech-to-text-service
-	```
+  ```sh
+  cf create-service speech_to_text standard speech-to-text-service
+  ```
 
   8. Create the AlchemyLanguage service:
 
-	```sh
-	cf create-service alchemy_language standard my-alchemylanguage
-	```
+  ```sh
+  cf create-service alchemy_language standard my-alchemylanguage
+  ```
 
   9. Push the updated application live by running the following command:
 
-	```sh
-	cf push
-	```
+  ```sh
+  cf push
+  ```
 
 See the [User interface in this sample application](#user-interface-in-the-sample-application) section for information about modifying the existing user interface to support other video sources.
 
@@ -96,46 +96,46 @@ First, make sure that you followed steps 1 through 9 in the [previous section](#
 
   ```none
   ALCHEMY_LANGUAGE_API_KEY=
-	SPEECH_TO_TEXT_USERNAME=
-	SPEECH_TO_TEXT_PASSWORD=
+  SPEECH_TO_TEXT_USERNAME=
+  SPEECH_TO_TEXT_PASSWORD=
   ```
 
   2. Copy the `username`, `password` credentials from your `speech-to-text-service` and the api key from `my-alchemylanguage` services in Bluemix to the previous file. To see the service credentials, run the following command, replacing `<application-name>` with the name of the application that you specified in your `manifest.yml` file:
 
-	```sh
-	cf env <application-name>
-	```
+  ```sh
+  cf env <application-name>
+  ```
    Your output should contain a section like the following:
 
-	```sh
-	System-Provided:
-	{
-	"VCAP_SERVICES": {
-	  "speech_to_text": [{
-			"credentials": {
-			  "url": "<url>",
-			  "password": "<password>",
-			  "username": "<username>"
-			},
-			"label": "speech-to-text",
-			"name": "speech-to-text-service",
-			"plan": "standard"
-	 }]
-	}
-	}
-	```
+  ```sh
+  System-Provided:
+  {
+  "VCAP_SERVICES": {
+    "speech_to_text": [{
+      "credentials": {
+        "url": "<url>",
+        "password": "<password>",
+        "username": "<username>"
+      },
+      "label": "speech-to-text",
+      "name": "speech-to-text-service",
+      "plan": "standard"
+   }]
+  }
+  }
+  ```
 
   3. Install any dependencies that a local version of your application requires:
 
-	```sh
-	npm install
-	```
+  ```sh
+  npm install
+  ```
 
   4. Start the application by running:
 
-	```sh
-	$ node app.js
-	```
+  ```sh
+  $ node app.js
+  ```
   5. Open [http://localhost:3000](http://localhost:3000) to see the running application.
 
 
