@@ -28,13 +28,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "async": "2.1.2",
     "body-parser": "^1.14.2",
     "browserify": "^13.1.1",
     "browserify-shim": "^3.8.11",
     "dotenv": "^2.0.0",
     "ejs": "^2.3.4",
-    "errorhandler": "^1.4.1",
     "express": "^4.13.4",
     "express-rate-limit": "^2.1.0",
     "express-secure-only": "^0.2.1",
