@@ -23,7 +23,7 @@ var videoProps = {
   curUrl: '',
   playing: false,
   currentTime: 0,
-  transcript: []
+  transcripts: []
 };
 
 exports.initVideoPlay = function(ctx) {
@@ -90,12 +90,12 @@ function startVideoSpeechStream() {
     $('.transcript--content')[0].scrollTop = $('.transcript--content')[0].scrollHeight;
     if (result.final) {
       // if we have the final text for that sentence, start a new one
-      videoProps.transcript.push({
+      videoProps.transcripts.push({
         text: result.alternatives[0].transcript,
         timestamp: result.alternatives[0].timestamps[0][1] + videoProps.currentTime
       })
 
-      concepts.update_transcript(videoProps.transcript);
+      concepts.updateTranscript(videoProps.transcripts);
 
     }
     if (videoProps.howitworks == null) {
