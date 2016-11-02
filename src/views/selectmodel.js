@@ -16,21 +16,19 @@
 /* global $ */
 'use strict';
 
+// eslint-disable-next-line
 var initPlayVideo = require('./videoplay').initPlayVideo;
 
 exports.initSelectModel = function(ctx) {
   ctx.models.forEach(function(model) {
     $('#dropdownMenuList').append(
-      $('<li>')
-      .attr('role', 'presentation')
-      .append(
-        $('<a>').attr('role', 'menu-item')
-        .attr('href', '/')
+      $('<li>').attr('role', 'presentation').append(
+        $('<a>').attr('role', 'menu-item').attr('href', '/')
         .attr('data-model', model.name)
-        .append(model.description.substring(0, model.description.length - 1), model.rate === 8000 ? ' (8KHz)' : ' (16KHz)'))
-    )
+        .append(model.description.substring(0, model.description.length - 1), model.rate === 8000
+      ? ' (8KHz)'
+      : ' (16KHz)')))
   });
-
 
   $('#dropdownMenuList').click(function(evt) {
     evt.preventDefault();
@@ -42,6 +40,7 @@ exports.initSelectModel = function(ctx) {
     $('#dropdownMenu1').dropdown('toggle');
     localStorage.setItem('currentModel', newModel);
     ctx.currentModel = newModel;
+    // eslint-disable-next-line
     initVideoPlay(ctx);
     $.publish('clearscreen');
   });

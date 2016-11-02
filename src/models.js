@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ /* global BUFFERSIZE */
+
 'use strict';
 var selectModel = require('./views/selectmodel').initSelectModel;
 
@@ -31,16 +33,16 @@ exports.getModels = function(token) {
   sttRequest.setRequestHeader('X-Watson-Authorization-Token', token);
   sttRequest.onload = function() {
     var response = JSON.parse(sttRequest.responseText);
-    var sorted = response.models.sort(function(a,b) {
-    if(a.name > b.name) {
-      return 1;
-    }
-    if( a.name < b.name) {
-      return -1;
-    }
-    return 0;
+    var sorted = response.models.sort(function(a, b) {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
     });
-    response.models=sorted;
+    response.models = sorted;
     localStorage.setItem('models', JSON.stringify(response.models));
     viewContext.models = response.models;
     selectModel(viewContext);

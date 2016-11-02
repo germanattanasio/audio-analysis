@@ -17,35 +17,22 @@
 'use strict';
 
 // security.js
-var secure     = require('express-secure-only'),
-  rateLimit    = require('express-rate-limit'),
-  helmet       = require('helmet');
+var secure = require('express-secure-only');
+var rateLimit = require('express-rate-limit');
+var helmet = require('helmet');
 
-module.exports = function (app) {
+module.exports = function(app) {
   app.enable('trust proxy');
-
-  // 1. redirects http to https
   app.use(secure());
+  app.use(helmet({frameguard: false}));
 
-  // 2. helmet with defaults
-  app.use(helmet());
-
-  // Allow from a specific host:
-  app.use(helmet.frameguard({
-    action: 'allow-from',
-    domain: 'https://watson-experience.mybluemix.net/'
-  }));
-
-  // 5. rate limiting
-  var limiter = rateLimit({
+  app.use('/api/token', rateLimit({
     windowMs: 30 * 1000, // seconds
     delayMs: 0,
-    max: 3,
+    max: 5,
     message: JSON.stringify({
-      error:'Too many requests, please try again in 30 seconds.',
+      error: 'Too many requests, please try again in 30 seconds.',
       code: 429
-    }),
-  });
-
-  app.use('/api/token', limiter);
+    })
+  }));
 };
