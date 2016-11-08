@@ -32,24 +32,17 @@ systems, and then only in the Firefox and Chrome web browsers.
 ### How this app works
 The Audio Analysis application extracts concepts from YouTube videos.
 
-To begin, select or specify a YouTube video. As the video streams, the [Speech to Text][speech_to_text] service transcribes its audio track. That text is then piped to the [AlchemyLanguage][alchemylanguage] service for analysis. The AlchemyLanguage extracts concepts from the trascription. When AlchemyLanguage identifies a concept from the audio, it returns that concept and an associated confidence score.
+To begin, select or specify a YouTube video. As the video streams, the [Speech to Text][speech_to_text] service transcribes its audio track. That text is then piped to the [AlchemyLanguage][alchemy_language] service for analysis, it extracts concepts from the trascription with an associated score
 
 ## Getting started
 
-The application is written in [Node.js](http://nodejs.org/) and uses [npm](https://www.npmjs.com/).  Instructions for downloading and installing these are included in the following procedure.
+The following instructions explain how to deploy this sample to Bluemix using the `cf` command-line interface (CLI) for Cloud Foundry. If you want to run the application locally, see the next section, [Running the application locally](#running-the-application-locally):
 
-The following instructions explain how to [fork the project on GitHub](https://github.com/watson-developer-cloud/audio-analysis#fork-destination-box) and push that fork to Bluemix using the `cf` command-line interface (CLI) for Cloud Foundry. If you want to run the application locally, see the next section, [Running the application locally](#running-the-application-locally):
-
-  1. Log into GitHub and fork the project repository. Clone your fork to a folder on your local system and change to that folder.
-
-  2. Create a Bluemix account. [Sign up][sign_up] in Bluemix or use an existing account. Watson services in beta are free to use, as are GA services in the standard plan below a certain usage threshold.
-
-  3. If it is not already installed on your system, download and install the [Cloud-foundry CLI][cloud_foundry] tool.
-
-  4. If it is not already installed on your system, install [Node.js](http://nodejs.org/). Installing Node.js will also install the `npm` command.
-
-  <a name="step5"></a>
-  5. Edit the `manifest.yml` file in the folder that contains your fork and replace `audio-analysis` with a unique name for your copy of the application. The name that you specify determines the application's URL, such as `application-name.mybluemix.net`. The relevant portion of the `manifest.yml` file looks like the following:
+  1. Fork the project.
+  2. Clone the fork into your computer.
+  3. [Sign up][sign_up] in Bluemix or use an existing account.
+  4. If it is not already installed on your system, download and install the [Cloud-foundry CLI][cloud_foundry] tool.
+  5. Edit the `manifest.yml` file in the folder that contains your fork and replace `audio-analysis-starter-kit` with a unique name for your application. The name that you specify determines the application's URL, such as `application-name.mybluemix.net`. The relevant portion of the `manifest.yml` file looks like the following:
 
     ```yml
     applications:
@@ -74,10 +67,10 @@ The following instructions explain how to [fork the project on GitHub](https://g
   cf create-service speech_to_text standard speech-to-text-service
   ```
 
-  8. Create the AlchemyLanguage service:
+  8. Create the [AlchemyLanguage][alchemy_language] service:
 
   ```sh
-  cf create-service alchemy_language standard my-alchemylanguage
+  cf create-service alchemy_api free alchemylanguage-service
   ```
 
   9. Push the updated application live by running the following command:
@@ -100,7 +93,7 @@ First, make sure that you followed steps 1 through 9 in the [previous section](#
   SPEECH_TO_TEXT_PASSWORD=
   ```
 
-  2. Copy the `username`, `password` credentials from your `speech-to-text-service` and the api key from `my-alchemylanguage` services in Bluemix to the previous file. To see the service credentials, run the following command, replacing `<application-name>` with the name of the application that you specified in your `manifest.yml` file:
+  2. Copy the `username`, `password` credentials from your `speech-to-text-service` and the api key from `alchemylanguage-service` services in Bluemix to the previous file. To see the service credentials, run the following command, replacing `<application-name>` with the name of the application that you specified in your `manifest.yml` file:
 
   ```sh
   cf env <application-name>
@@ -142,21 +135,12 @@ First, make sure that you followed steps 1 through 9 in the [previous section](#
 ## About the Audio Analysis pattern
 
 First, make sure you read the [Reference Information](#reference-information) to understand the services that are involved in this pattern.
-The following image shows a flow diagram for spoken language analysis using the Speech-To-Text and AlchemyLanguage services:
-
-<p align="center">
-  <img src="docs/workflow.png"/>
-</p>
 
 ### Using the Speech To Text and the AlchemyLanguage services
 
-When a quality audio signal contains terms found in Wikipedia (the current source of concepts in AlchemyLanguage), the combination of Speech To Text and AlchemyLanguage can be used to analyze the audio source to build summaries, indices, and to provide recommendations for additional related content. Though the Speech-To-Text service supports several languages, the AlchemyLanguage service currently only supports English.
+When a quality audio signal contains terms found in the current source of concepts in AlchemyLanguage, the combination of Speech To Text and AlchemyLanguage can be used to analyze the audio source to build summaries, indices, and to provide recommendations for additional related content. Though the Speech-To-Text service supports several languages, the AlchemyLanguage service currently only supports English.
 
-The Audio Analysis app uses the node.js Speech-To-Text JavaScript SDK, which is a client-side library for audio transcriptions from the Speech To Text service. It also uses the `annotate_text` and `conceptual_search` APIs from AlchemyLanguage to extract concepts and provide content recommendations. In order to change the source of content for recommendations, the user should ingest the content of interest into the AlchemyLanguage service using the API set under the prefix `/corpus`.
-
-This app generates a new recommendation when it detects an existing concept from the streaming audio transcript. Typically, the app will be reasonably confident about the top 3 concepts after one to two minutes.  After the app is confident about the top 3 concepts, the recommendations will stabilize. One can make small modifications to the app to produce different behaviors.
-
-Additional experiences can be created using these services. For example, the transcripts of multiple audio files can be added to a corpus in AlchemyLanguage (using the API endpoint /corpus) to be used as the content source for recommendations. This in turn can be used to provide a "fuzzy" search function that is able to locate reference to a topic of interest. For example, a search for “algae” will locate those portions of a video where not only “algae” is mentioned, but also “coral reefs” and “biodiversity”.
+The Audio Analysis app uses the node.js Speech-To-Text JavaScript SDK, which is a client-side library for audio transcriptions from the Speech To Text service. It also uses the `concepts` feature from AlchemyLanguage to extract concepts.
 
 ### When to use this pattern
 
@@ -173,7 +157,7 @@ The following links provide more information about the AlchemyLanguage and Speec
 
 #### AlchemyLanguage
 
-* [API documentation](http://www.ibm.com/watson/developercloud/doc/alchemy-language/): Get an in-depth understanding of the AlchemyLanguage service
+* [API documentation](http://www.ibm.com/watson/developercloud/doc/alchemylanguage/): Get an in-depth understanding of the AlchemyLanguage service
 * [API explorer](https://watson-api-explorer.mybluemix.net/apis/alchemy-language-v1): Try out the REST API
 
 #### Speech To Text
@@ -186,7 +170,7 @@ The following links provide more information about the AlchemyLanguage and Speec
 
 The user interface that this sample application provides is intended as an example, and is not proposed as the user interface for your applications. However, if you want to use this user interface, you will want to modify the following files:
 
-* `src/views/index.ejs` - Lists the YouTube videos and footer values that are shown on the demo application's landing page. These items are defined using string values that are set in the CSS for the application. (See the next bullet in this list.) By default, the items in the footer are placeholders for IBM-specific values because they are used in the running instance of this sample application. For example, the Terms and Conditions do not apply to your use of the source code, to which the [Apache license](#license) applies.
+* `src/views/index.ejs` - Lists the YouTube videos and footer values that are shown on the demo application's landing page. These items are defined using string values that are set in the CSS for the application.
 * `src/views/videoplay.js` - Maps YouTube video URLs to API calls and initiates streaming. You will want to expand or modify this if you want to use another video source or player.
 * `src/index.sj` - Supports multiple types of YouTube URLs. You will want to expand or modify this if you want to use another video source or player.
 
