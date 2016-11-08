@@ -193,6 +193,7 @@ When troubleshooting your Bluemix app, the most useful source of information is 
 
   See [CONTRIBUTING](CONTRIBUTING.md).
 
+
 [cloud_foundry]: https://github.com/cloudfoundry/cli
 [sign_up]:https://console.ng.bluemix.net/registration/
 [speech_to_text]: http://www.ibm.com/watson/developercloud/speech-to-text.html
