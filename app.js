@@ -51,13 +51,19 @@ app.get('/tos', function(req, res) {
 });
 
 app.post('/api/concepts', function(req, res, next) {
-  alchemyLanguage.concepts(req.body, function(err, result) {
-    if (err)
-      next(err);
-    else
-      res.json(result);
-    }
-  );
+// Uncomment the lines below to enable AlchemyLanguage get concepts call.
+// ---------
+
+//   alchemyLanguage.concepts(req.body, function(err, result) {
+//     if (err)
+//       next(err);
+//     else
+//       res.json(result);
+//     }
+//   );
+
+  // For now return an static concept
+  res.json({ concepts: [{text: "Not a real concept", relevance: "0.99"}]});
 });
 
 app.get('/api/video', function(req, res, next) {
