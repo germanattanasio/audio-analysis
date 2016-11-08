@@ -32,7 +32,7 @@ var authService = new AuthorizationV1(extend({
 }, vcapServices.getCredentials('speech_to_text')));
 
 var alchemyLanguage = new AlchemyLanguageV1({
-  api_key: process.env.ALCHEMY_LANGUAGE_API_KEY
+  api_key: process.env.ALCHEMY_LANGUAGE_API_KEY || '<default-api-key>'
 });
 
 // Bootstrap application settings
