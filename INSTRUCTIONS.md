@@ -87,6 +87,9 @@ You will see the finished application, which utilizes the Speech to Text and Alc
 
 You have completed the Audio Analysis Lab! :bowtie:
 
+
+![Congratulations](http://i.giphy.com/ENagATV1Gr9eg.gif)
+
 [bluemix]: https://console.ng.bluemix.net/
 [wdc_services]: http://www.ibm.com/watson/developercloud/services-catalog.html
 [alchemy_language]: http://www.ibm.com/watson/developercloud/doc/alchemylanguage
