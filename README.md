@@ -70,7 +70,7 @@ The following instructions explain how to deploy this sample to Bluemix using th
   8. Create the [AlchemyLanguage][alchemy_language] service:
 
   ```sh
-  cf create-service alchemy_api free alchemylanguage-service
+  cf create-service alchemy_api free alchemy-language-service
   ```
 
   9. Push the updated application live by running the following command:
