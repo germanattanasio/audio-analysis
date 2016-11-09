@@ -105,7 +105,7 @@ You will see the finished application, which utilizes the Speech to Text and Alc
 
 # Congratulations
 
-You have completed the Personalized Recommendations Lab! :bowtie:
+You have completed the Audio Analysis Lab! :bowtie:
 
  ![Congratulations](http://i.giphy.com/ENagATV1Gr9eg.gif)
 
