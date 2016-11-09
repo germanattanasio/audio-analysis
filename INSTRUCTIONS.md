@@ -53,7 +53,7 @@ So let’s get started. The first thing to do is to build out the shell of our a
   8. Create the [AlchemyLanguage][alchemy_language] service:
 
   ```sh
-  cf create-service alchemy_api free alchemylanguage-service
+  cf create-service alchemy_api free alchemy-language-service
   ```
 
   9. Push the updated application live by running the following command:
