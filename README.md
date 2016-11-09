@@ -1,4 +1,4 @@
-# Audio Analysis [![Build Status](https://travis-ci.org/watson-developer-cloud/audio-analysis.svg?branch=master)](http://travis-ci.org/watson-developer-cloud/audio-analysis)
+# Audio Analysis
 
 This application is an **Application Starter Kit** (ASK) that is designed to get you up and running quickly with a common industry pattern, and to provide information about best practices around Watson services. The **Audio Analysis** application was created to highlight the combination of the [Speech to Text][speech_to_text] (STT) and [AlchemyLanguage][alchemy_language] services as an [Audio Analysis](#about-the-audio-analysis-pattern) tool. This application can serve as the basis for your own applications that follow that pattern.
 
