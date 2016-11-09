@@ -16,32 +16,55 @@ So let’s get started. The first thing to do is to build out the shell of our a
 
 ## Deploy this sample application in Bluemix
 
-  1. Click the button below to fork the project into IBM DevOps Services and deploy your own instance of this application on [IBM Bluemix][bluemix].
+  1. Clone the repository into your computer.
+  2. [Sign up][sign_up] in Bluemix or use an existing account.
+  3. If it is not already installed on your system, download and install the [Cloud-foundry CLI][cloud_foundry] tool.
+  4. Edit the `manifest.yml` file in the folder that contains your fork and replace `audio-analysis-starter-kit` with a unique name for your application. The name that you specify determines the application's URL, such as `application-name.mybluemix.net`. The relevant portion of the `manifest.yml` file looks like the following:
 
-  [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/audio-analysis)
+    ```yml
+    applications:
+    - services:
+      - speech-to-text-service
+      - alchemy-language-service
+      name: application-name
+      command: npm start
+      path: .
+      memory: 512M
+    ```
 
-  2. From here you will be taken to a Bluemix page, where you will be prompted to name your app. A sample name is provided for you, but feel free to give your application any name you like (if the name is taken by another user you will be prompted to try another name).
+  6. Connect to Bluemix by running the following commands in a terminal window:
 
-  ![deploy](/instructions/deploy.png)
+  ```sh
+  cf api https://api.ng.bluemix.net
+  cf login -u <your-Bluemix-ID> -p <your-Bluemix-password>
+  ```
 
-  **Note:** Use the default settings for Region / Organization / Space on the Bluemix landing page.
+  7. Create an instance of the Speech to Text in Bluemix by running the following command:
 
-  3. Once you have named your application, click the deploy button to begin the deploy process to Bluemix. During this process, Bluemix will automatically build and deploy our starter application based on the Github repository that we accessed at the start of the lab.
+  ```sh
+  cf create-service speech_to_text standard speech-to-text-service
+  ```
 
-  4. Once the application has finished deploying, you will see a "Success!" message. On the same screen, you will see buttons to "Edit Code" and "View App". Let's select the "View App" button to launch the app in it's current state.
+  8. Create the [AlchemyLanguage][alchemy_language] service:
 
-  ![deploy-success](/instructions/deploy-success.png)
+  ```sh
+  cf create-service alchemy_api free alchemylanguage-service
+  ```
 
+  9. Push the updated application live by running the following command:
 
-  5. In the starter app, you are able to select a video and see the transcription using the Speech to Text service.
+  ```sh
+  cf push
+  ```
+  
 
-  Right now, our app is interesting, but we can add more functionality into it to make it much more useful.
+Right now, our app is interesting, but we can add more functionality into it to make it much more useful.
 
 ## Modify the existing application
 
-  1. It's time to edit our source code and add one more of the Watson services into the app. Back on the "Success!" page, click the button that says **Edit Code**.
+  1. It's time to edit our source code and add one more of the Watson services into the app.
 
-  2. Within the repository, navigate to the `app.js` file and click on it to open the application source code.
+  2. Open the `app.js` file.
 
   3. Uncomment from line 57 to line 63 and comment line 66. The final method should look like:
 
@@ -58,23 +81,19 @@ So let’s get started. The first thing to do is to build out the shell of our a
 
   The code above will connect the app to the [Alchemy Language][alchemy_language] service.
 
-  4. Click on File -> Save or press Crt+S.
+  4. Save the file.
 
   We've added AlchemyLanguage, but we need to update our application to reflect these changes.
 
 ## Deploy
 
-  1. The last step in order to complete our application is to deploy our changes to Bluemix. To do this, we need to push our new code to the application. In the code editor screen, switch to the Git view, the 2nd icon in the left navigation bar.
+  1. The last step in order to complete our application is to deploy our changes to Bluemix. To do this, we need to push our new code to the application. 
 
-  2. Locate your change to app.js file. Check it (select it), add a commit message, and click **Commit**.
+  2. Push the updated application live by running the following command:
 
-  3. Click **Sync** to send your changes from this workspace to the main repository and trigger a deploy of your app.
-
-  4. Finally, Click on **Build and Deploy** to see the deploy process.
-
-
-**Note:** While this may show as overly complicated, we show it here to illustrate you can have exactly the same source management practices you could have your local environment connected to a Git repository, in the Bluemix DevOps environment.
-
+  ```sh
+  cf push
+  ```
 
 ## Test
 
@@ -85,11 +104,9 @@ You will see the finished application, which utilizes the Speech to Text and Alc
 
 # Congratulations
 
-You have completed the Audio Analysis Lab! :bowtie:
+You have completed the Personalized Recommendations Lab! :bowtie:
 
-
-![Congratulations](http://i.giphy.com/ENagATV1Gr9eg.gif)
-
+[sign_up]: https://bluemix.net/registration
 [bluemix]: https://console.ng.bluemix.net/
 [wdc_services]: http://www.ibm.com/watson/developercloud/services-catalog.html
 [alchemy_language]: http://www.ibm.com/watson/developercloud/doc/alchemylanguage
