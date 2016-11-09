@@ -110,3 +110,4 @@ You have completed the Personalized Recommendations Lab! :bowtie:
 [bluemix]: https://console.ng.bluemix.net/
 [wdc_services]: http://www.ibm.com/watson/developercloud/services-catalog.html
 [alchemy_language]: http://www.ibm.com/watson/developercloud/doc/alchemylanguage
+[cloud_foundry]: https://github.com/cloudfoundry/cli
