@@ -17,6 +17,11 @@ So let’s get started. The first thing to do is to build out the shell of our a
 ## Deploy this sample application in Bluemix
 
   1. Clone the repository into your computer.
+
+     ```sh
+     git clone git@github.com:watson-developer-cloud/audio-analysis.git
+     ```
+
   2. [Sign up][sign_up] in Bluemix or use an existing account.
   3. If it is not already installed on your system, download and install the [Cloud-foundry CLI][cloud_foundry] tool.
   4. Edit the `manifest.yml` file in the folder that contains your code and replace `audio-analysis-starter-kit` with a unique name for your application. The name that you specify determines the application's URL, such as `application-name.mybluemix.net`. The relevant portion of the `manifest.yml` file looks like the following:
