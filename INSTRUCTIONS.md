@@ -111,6 +111,8 @@ You will see the finished application, which utilizes the Speech to Text and Alc
 
 You have completed the Personalized Recommendations Lab! :bowtie:
 
+ ![Congratulations](http://i.giphy.com/ENagATV1Gr9eg.gif)
+
 [sign_up]: https://bluemix.net/registration
 [bluemix]: https://console.ng.bluemix.net/
 [wdc_services]: http://www.ibm.com/watson/developercloud/services-catalog.html
