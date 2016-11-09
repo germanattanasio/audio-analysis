@@ -19,7 +19,7 @@ So let’s get started. The first thing to do is to build out the shell of our a
   1. Clone the repository into your computer.
 
      ```sh
-     git clone git@github.com:watson-developer-cloud/audio-analysis.git
+     git clone https://github.com/watson-developer-cloud/audio-analysis.git
      ```
 
   2. [Sign up][sign_up] in Bluemix or use an existing account.
