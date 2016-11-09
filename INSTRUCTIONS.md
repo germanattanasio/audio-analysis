@@ -100,10 +100,6 @@ Right now, our app is interesting, but we can add more functionality into it to 
   cf push
   ```
 
-## Test
-
-To test out our application, go back to the "Success!" page and click on the "View App" button again.
-
 You will see the finished application, which utilizes the Speech to Text and AlchemyLanguage capabilities to provide a useful tool for users to transcribe Videos and identify concepts on them.
 
 
