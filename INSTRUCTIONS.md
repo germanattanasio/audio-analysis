@@ -41,7 +41,7 @@ So let’s get started. The first thing to do is to build out the shell of our a
 
   ```none
   cf api https://api.ng.bluemix.net
-  cf login -u <your-Bluemix-ID> -p <your-Bluemix-password>
+  cf login
   ```
 
 1. Create and retrieve service keys to access the [AlchemyLanguage][alchemy_language] service by running the following command:
