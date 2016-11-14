@@ -28,12 +28,10 @@ var app = express();
 var authService = new AuthorizationV1(extend({
   username: process.env.SPEECH_TO_TEXT_USERNAME,
   password: process.env.SPEECH_TO_TEXT_PASSWORD,
-  url: process.env.SPEECH_TO_TEXT_URL
+  url: 'https://stream.watsonplatform.net/speech-to-text/api'
 }, vcapServices.getCredentials('speech_to_text')));
 
-var alchemyLanguage = new AlchemyLanguageV1({
-  api_key: process.env.ALCHEMY_LANGUAGE_API_KEY || '<default-api-key>'
-});
+var alchemyLanguage = new AlchemyLanguageV1({});
 
 // Bootstrap application settings
 require('./config/express')(app);
@@ -51,19 +49,13 @@ app.get('/tos', function(req, res) {
 });
 
 app.post('/api/concepts', function(req, res, next) {
-// Uncomment the lines below to enable AlchemyLanguage get concepts call.
-// ---------
-
-//   alchemyLanguage.concepts(req.body, function(err, result) {
-//     if (err)
-//       next(err);
-//     else
-//       res.json(result);
-//     }
-//   );
-
-  // For now return an static concept
-  res.json({ concepts: [{text: "Not a real concept", relevance: "0.99"}]});
+  alchemyLanguage.concepts(req.body, function(err, result) {
+    if (err)
+      next(err);
+    else
+      res.json(result);
+    }
+  );
 });
 
 app.get('/api/video', function(req, res, next) {

@@ -6,6 +6,7 @@ declared-services:
   speech-to-text-service:
     label: speech_to_text
     plan: standard
+
 applications:
 - name: audio-analysis-starter-kit
   path: .
