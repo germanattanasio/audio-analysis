@@ -88,7 +88,7 @@ app.post('/api/token', function(req, res, next) {
 // error-handler application settings
 require('./config/error-handler')(app);
 
-var port = process.env.VCAP_APP_PORT || 3000;
+var port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
 app.listen(port);
 // eslint-disable-next-line
 console.log('listening at:', port);
