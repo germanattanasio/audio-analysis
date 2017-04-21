@@ -14,4 +14,4 @@ applications:
   memory: 512M
   services:
   - speech-to-text-service
-  - alchemy-language-service
+  - alchemylanguage-service
